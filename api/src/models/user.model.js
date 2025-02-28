@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    victories: {
+      type: Number,
+      default: 0
+    },
+    defeats: {
+      type: Number,
+      default: 0
+    },
   },
   { timestamps: true }
 );

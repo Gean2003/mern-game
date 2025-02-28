@@ -27,4 +27,4 @@ const friendsSchema = new mongoose.Schema(
 
 const Friends = mongoose.model("Friends", friendsSchema);
 
-export default User;
+export default Friends;
