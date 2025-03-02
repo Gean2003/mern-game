@@ -10,6 +10,10 @@ export const signup = async (req, res) => {
             return res.status(400).json({ message: "All fields are required"})
         }
 
+        const userNameExists = await User.findOne({userName})
+        
+        if (userNameExists) return res.status(400).json({message: "Username already exists"})
+
         if(password.length < 6) {
             return res.status(400).json({message: "Password must be at least 6 character"})
         }
@@ -22,7 +26,7 @@ export const signup = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const newUser = await User.create({
-            userName,
+            userName: userName.trim().toLowerCase(),
             email,
             password : hashedPassword,
             profilePic,
