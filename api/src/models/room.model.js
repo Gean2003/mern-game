@@ -22,6 +22,21 @@ const roomSchema = new mongoose.Schema(
       enum: ["rock", "scissors", "paper"],
       default: "",
     },
+    rounds: [ // Array para almacenar los resultados de cada ronda
+      {
+        senderChoice: String,
+        receiverChoice: String,
+        winner: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          default: null,
+        },
+      },
+    ],
+    currentRound: { // Contador de la ronda actual
+      type: Number,
+      default: 1,
+    },
     winner: { // Nueva propiedad para almacenar al ganador
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -33,4 +48,4 @@ const roomSchema = new mongoose.Schema(
 
 const Room = mongoose.model("Room", roomSchema);
 
-export default Message;
+export default Room;
