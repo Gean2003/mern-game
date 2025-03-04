@@ -1,11 +1,12 @@
 import express from "express";
+import { protectedRoute } from "../middleware/auth.middleware.js";
+import { sendMessage } from "../controllers/room.controller.js";
 
 const router = express.Router();
 
-router.get("/users")
 router.post("/:id")
 router.post("create/room")
 
-router.post("/send/:id")
+router.post("/send/:id", protectedRoute, sendMessage)
 
 export default router;

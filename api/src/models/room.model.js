@@ -42,6 +42,11 @@ const roomSchema = new mongoose.Schema(
       ref: "User",
       default: null,
     },
+    status:{
+      type: String,
+      enum: ["active", "finished"],
+      default: "active"
+    }
   },
   { timestamps: true }
 );
