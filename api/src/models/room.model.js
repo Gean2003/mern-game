@@ -15,12 +15,12 @@ const roomSchema = new mongoose.Schema(
     senderChoice: {
       type: String,
       enum: [ "rock", "scissors", "paper"],
-      default: ""
+      default: null,
     },
     receiverChoice: { // Agregamos "receiverChoice" para la elección del receptor
       type: String,
       enum: ["rock", "scissors", "paper"],
-      default: "",
+      default: null,
     },
     rounds: [ // Array para almacenar los resultados de cada ronda
       {
@@ -35,7 +35,7 @@ const roomSchema = new mongoose.Schema(
     ],
     currentRound: { // Contador de la ronda actual
       type: Number,
-      default: 1,
+      default: 0,
     },
     winner: { // Nueva propiedad para almacenar al ganador
       type: mongoose.Schema.Types.ObjectId,
