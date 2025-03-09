@@ -133,8 +133,10 @@ export const updateRoom = async (req, res) => {
     // Guardar los cambios en la base de datos
     await findRoom.save();
 
+    const populatedRoom = await Room.findById(findRoom._id).populate("winner", "userName").populate("rounds.winner", "userName")
+
     // Devolver la sala actualizada
-    return res.status(200).json(findRoom);
+    return res.status(200).json(populatedRoom);
   } catch (error) {
     console.log("Error in updateRoom:", error.message);
     return res.status(500).json({ message: "Internal Server error" });
